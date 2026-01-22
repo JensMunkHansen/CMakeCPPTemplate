@@ -1,16 +1,20 @@
 #include "Hello.h"
 
-namespace hello {
+namespace hello
+{
 
-std::string greet(const std::string& name) {
+std::string greet(const std::string& name)
+{
     return "Hello, " + name + "!";
 }
 
-std::string version() {
+std::string version()
+{
     return "1.0.0";
 }
 
-int add(int a, int b) {
+int add(int a, int b)
+{
     return a + b;
 }
 

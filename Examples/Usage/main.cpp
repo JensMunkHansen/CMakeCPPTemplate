@@ -1,7 +1,8 @@
-#include <iostream>
 #include "Hello.h"
+#include <iostream>
 
-int main() {
+int main()
+{
     // Demonstrate greeting function
     std::cout << hello::greet("World") << std::endl;
     std::cout << hello::greet("Template User") << std::endl;

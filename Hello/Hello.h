@@ -3,7 +3,8 @@
 #include "hello_export.h"
 #include <string>
 
-namespace hello {
+namespace hello
+{
 
 /**
  * @brief Get a greeting message

@@ -1,7 +1,18 @@
-cmake_minimum_required(VERSION 3.22...3.28)
+cmake_minimum_required(VERSION 3.25...3.31)
+if(NOT DEFINED CMAKE_EXPORT_COMPILE_COMMANDS)
+  set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+endif()
+
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/CMake)
+
+# Set version from git tag (or default 1.0.0 with commit count as tweak)
+include(spsProjectVersion)
+sps_set_project_version(
+  DEFAULT_VERSION "1.0.0"
+  OUT_VERSION HELLO_VERSION)
 
 project(Hello
-  VERSION 1.0.0
+  VERSION ${HELLO_VERSION}
   DESCRIPTION "Template project with Hello library"
   LANGUAGES CXX
 )
@@ -10,7 +21,6 @@ project(Hello
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMake")
 
 # Core includes
-include(spsCompileCommands)
 include(spsInstallDirs)
 include(spsTargets)
 
@@ -61,3 +71,6 @@ if(BUILD_DOCUMENTATION)
     INPUT_DIRECTORIES "${CMAKE_SOURCE_DIR}/${PROJECT_NAME}"
   )
 endif()
+
+# === Export compile_commands.json for clangd ===
+include(spsCompileCommands)
